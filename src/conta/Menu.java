@@ -2,10 +2,6 @@ package conta;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-<<<<<<< HEAD
-=======
-
->>>>>>> interface
 import conta.util.Cores;
 
 public class Menu {
