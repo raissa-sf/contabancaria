@@ -11,10 +11,6 @@ public class ContaController implements ContaRepository{
 	private List<Conta> listaContas = new ArrayList<Conta>();
 	int numero = 0;
 	
-	public int gerarNumero() {
-		return ++ numero;
-	}
-	
 	@Override
 	public void listarTodas() {
 		for (var conta : listaContas) {
@@ -32,7 +28,13 @@ public class ContaController implements ContaRepository{
 
 	@Override
 	public void procurarPorNumero(int numero) {
-		// TODO Auto-generated method stub
+		var conta = buscarNaCollection(numero);
+		
+		if (conta != null) {
+			conta.visualizar();
+		}else {
+			System.out.printf("A Conta número: %d não foi encontrada!%n", numero);
+		}
 		
 	}
 
@@ -64,6 +66,19 @@ public class ContaController implements ContaRepository{
 	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int gerarNumero() {
+		return ++ numero;
+	}
+	
+	public Conta buscarNaCollection(int numero) {
+		for (var conta : listaContas) {
+			if (conta.getNumero() == numero) {
+				return conta;
+			}
+		}
+		return null;
 	}
 
 }
