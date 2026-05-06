@@ -87,7 +87,7 @@ public class Menu {
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
-
+				sacar();
 				keyPress();
 				break;
 			case 7:
@@ -233,7 +233,6 @@ public class Menu {
 		
 		System.out.print("Digite o número da conta: ");
 		int numero = leia.nextInt();
-		leia.nextLine();
 		
 		System.out.println("\nTem certeza que deseja excluir essa conta? (S/N)");
 		String confirmacao = leia.nextLine();
@@ -243,6 +242,16 @@ public class Menu {
 		}else {
 			System.out.println("\nOperação cancelada.");
 		}
+	}
+	
+	public static void sacar() {
+		System.out.print("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		
+		System.out.print("Digite o valor do saque: ");
+		float valor = leia.nextFloat();
+		
+		contaController.sacar(numero, valor);
 	}
 
 	public static void keyPress() {
