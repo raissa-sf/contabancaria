@@ -5,9 +5,11 @@ import conta.model.Conta;
 import conta.util.Cores;
 
 public class Menu {
+	
+	private static final Scanner leia = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 
-		Scanner leia = new Scanner(System.in);
 
 		int opcao;
 
