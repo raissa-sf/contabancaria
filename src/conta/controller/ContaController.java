@@ -33,14 +33,22 @@ public class ContaController implements ContaRepository{
 		if (conta != null) {
 			conta.visualizar();
 		}else {
-			System.out.printf("A Conta número: %d não foi encontrada!%n", numero);
+			System.out.printf("A conta número: %d não foi encontrada!%n", numero);
 		}
 		
 	}
 
 	@Override
 	public void atualizar(Conta conta) {
-		// TODO Auto-generated method stub
+		
+		var buscaConta = buscarNaCollection(conta.getNumero());
+		
+		if (buscaConta != null) {
+			listaContas.set(listaContas.indexOf(buscaConta), conta);
+			System.out.printf("A conta número: %d foi atualizada com sucesso!%n", conta.getNumero());
+		}else {
+			System.out.printf("A conta número: %d não foi encontrada!%n", numero);
+		}
 		
 	}
 
