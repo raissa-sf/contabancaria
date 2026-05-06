@@ -92,7 +92,7 @@ public class Menu {
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
-
+				depositar();
 				keyPress();
 				break;
 			case 8:
@@ -253,6 +253,17 @@ public class Menu {
 		
 		contaController.sacar(numero, valor);
 	}
+	
+	public static void depositar() {
+		System.out.print("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		
+		System.out.print("Digite o valor do depósito: ");
+		float valor = leia.nextFloat();
+		
+		contaController.depositar(numero, valor);
+	}
+	
 
 	public static void keyPress() {
 		System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
