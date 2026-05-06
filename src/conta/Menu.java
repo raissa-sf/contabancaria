@@ -97,7 +97,7 @@ public class Menu {
 				break;
 			case 8:
 				System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
-
+				transferir();
 				keyPress();
 				break;
 			default:
@@ -262,6 +262,19 @@ public class Menu {
 		float valor = leia.nextFloat();
 		
 		contaController.depositar(numero, valor);
+	}
+	
+	public static void transferir(){
+		System.out.print("Digite o número da conta de origem: ");
+		int numeroOrigem = leia.nextInt();
+		
+		System.out.print("Digite o número da conta de destino: ");
+		int numeroDestino = leia.nextInt();
+		
+		System.out.print("Digite o valor da transferência: ");
+		float valor = leia.nextFloat();
+		
+		contaController.transferir(numeroOrigem, numeroDestino, valor);
 	}
 	
 
