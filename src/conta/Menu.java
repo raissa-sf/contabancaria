@@ -163,6 +163,14 @@ public class Menu {
 		contaController.cadastrar(
 				new ContaCorrente(contaController.gerarNumero(), 123, 2, "Giovanna Giunchetti", 8000.00f, 23));
 	}
+	
+	public static void procurarContaPorNumero() {
+		
+		System.out.println("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		
+		contaController.procurarPorNumero(numero);
+	}
 
 	public static void keyPress() {
 		System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
