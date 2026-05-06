@@ -82,7 +82,7 @@ public class Menu {
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");
-
+				deletarConta();
 				keyPress();
 				break;
 			case 6:
@@ -226,6 +226,22 @@ public class Menu {
 
 		} else {
 			System.out.printf("\nA conta número %d não foi encontrada!\n", numero);
+		}
+	}
+	
+	public static void deletarConta() {
+		
+		System.out.print("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		leia.nextLine();
+		
+		System.out.println("\nTem certeza que deseja excluir essa conta? (S/N)");
+		String confirmacao = leia.nextLine();
+		
+		if(confirmacao.equalsIgnoreCase("S")) {
+			contaController.deletar(numero);
+		}else {
+			System.out.println("\nOperação cancelada.");
 		}
 	}
 
