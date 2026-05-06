@@ -2,11 +2,14 @@ package conta;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import conta.controller.ContaController;
 import conta.util.Cores;
 
 public class Menu {
 
 	private static final Scanner leia = new Scanner(System.in);
+	private static final ContaController contaController = new ContaController();
 
 	public static void main(String[] args) {
 		
@@ -59,7 +62,7 @@ public class Menu {
 				break;
 			case 2:
 				System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n");
-
+				listarContas();
 				keyPress();
 				break;
 			case 3:
@@ -107,6 +110,11 @@ public class Menu {
 		System.out.println("Raissa Santos Feitosa - raissa.feitosa06@gmail.com");
 		System.out.println("github.com/raissa-sf");
 		System.out.println("*********************************************************");
+	}
+	
+	public static void listarContas() {
+		
+		contaController.listarTodas();
 	}
 	
 	public static void keyPress() {
