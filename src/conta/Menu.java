@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta.controller.ContaController;
+import conta.model.ContaCorrente;
 import conta.util.Cores;
 
 public class Menu {
@@ -12,7 +13,7 @@ public class Menu {
 	private static final ContaController contaController = new ContaController();
 
 	public static void main(String[] args) {
-		
+
 		int opcao;
 
 		while (true) {
@@ -57,7 +58,7 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n");
-
+				cadastrarConta();
 				keyPress();
 				break;
 			case 2:
@@ -102,7 +103,6 @@ public class Menu {
 			}
 		}
 	}
-	
 
 	public static void sobre() {
 		System.out.println("\n*********************************************************");
@@ -111,12 +111,46 @@ public class Menu {
 		System.out.println("github.com/raissa-sf");
 		System.out.println("*********************************************************");
 	}
-	
+
 	public static void listarContas() {
-		
+
 		contaController.listarTodas();
 	}
-	
+
+	public static void cadastrarConta() {
+
+		System.out.print("Digite o número da Agência: ");
+		int agencia = leia.nextInt();
+
+		System.out.print("Digite o nome do Titular: ");
+		leia.skip("\\R");
+		String titular = leia.nextLine();
+
+		System.out.print("Digite o tipo da conta (1 - CC | 2 - CP): ");
+		int tipo = leia.nextInt();
+
+		System.out.print("Digite o Saldo Inicial da conta: ");
+		float saldo = leia.nextFloat();
+
+		switch (tipo) {
+
+		case 1 -> {
+			System.out.println("Digite o limite da conta: ");
+			float limite = leia.nextFloat();
+			contaController
+					.cadastrar(new ContaCorrente(contaController.gerarNumero(), agencia, tipo, titular, saldo, limite));
+		}
+		case 2 -> {
+			System.out.println("Digite o dia do aniversário da conta: ");
+			int aniversario = leia.nextInt();
+			contaController.cadastrar(
+					new ContaCorrente(contaController.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
+		}
+		default -> System.out.println(Cores.TEXT_RED_BOLD + "Tipo de conta inválido!" + Cores.TEXT_RESET);
+		}
+
+	}
+
 	public static void keyPress() {
 		System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
 		leia.nextLine();
